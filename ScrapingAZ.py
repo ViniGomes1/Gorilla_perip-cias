@@ -17,7 +17,6 @@ edgeOptions.add_argument('--no-sandbox')
 edgeOptions.add_argument('--disable-dev-shm-usage')
 edgeOptions.add_argument("--disable-javascript")
 driver = webdriver.Chrome(options=edgeOptions, service=Service(ChromeDriverManager().install()))
-driver = webdriver.Remote
 soup = BeautifulSoup
 
 #promo https://amzn.to/3CQc1EO
