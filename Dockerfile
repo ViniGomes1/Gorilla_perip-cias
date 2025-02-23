@@ -10,7 +10,10 @@ RUN pip3 install -r requirements.txt
 
 COPY . .
 
-EXPOSE 8000
-USER 1000
+RUN apt-get update && apt-get install -y wget unzip && \
+  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+	apt install -y ./google-chrome-stable_current_amd64.deb && \
+	rm google-chrome-stable_current_amd64.deb && \ 
+	apt-get clean
 
 CMD ["python", "BotTelegram_Kong.py"]

@@ -59,7 +59,7 @@ class ScrapingAmazon():
         edgeOptions.add_argument('--no-sandbox')
         edgeOptions.add_argument('--disable-dev-shm-usage')
         edgeOptions.add_argument("--disable-javascript")
-        driver = webdriver.Remote("https://chrome-standalone.onrender.com/wd/hub", options=edgeOptions)
+        driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=edgeOptions)
 
         try:
             driver.get(self.link)
