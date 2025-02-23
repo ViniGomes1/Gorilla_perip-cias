@@ -18,4 +18,6 @@ RUN apt-get update && apt-get install -y wget unzip && \
 
 COPY . .
 
+EXPOSE 10000
+
 CMD ["python", "BotTelegram_Kong.py"]
