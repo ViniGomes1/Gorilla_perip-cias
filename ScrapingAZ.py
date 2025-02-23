@@ -1,6 +1,9 @@
 from selenium import webdriver
 from selenium.common import TimeoutException
-from selenium.webdriver.edge.options import Options
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+
 
 import time
 from bs4 import BeautifulSoup, PageElement
@@ -13,7 +16,7 @@ edgeOptions.add_argument('--disable-gpu')
 edgeOptions.add_argument('--no-sandbox')
 edgeOptions.add_argument('--disable-dev-shm-usage')
 edgeOptions.add_argument("--disable-javascript")
-driver = webdriver.Edge(options=edgeOptions)
+driver = webdriver.Chrome(options=edgeOptions, service=Service(ChromeDriverManager().install()))
 
 soup = BeautifulSoup
 

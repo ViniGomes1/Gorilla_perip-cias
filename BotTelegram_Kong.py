@@ -54,7 +54,7 @@ def link(mensagem):
 @bot.message_handler(content_types=['photo'], func=lambda message : INICIADO_FOTO)
 def foto(mensagem):
     global CAPTION_ID, INICIADO_FOTO, INICIADO_NOME
-    mensagem_resposta = ""
+
     if mensagem.caption == "/foto":
         CAPTION_ID = mensagem.photo[0].file_id
         mensagem_resposta = "Foto upada, agora escolha um nome com /nome"
