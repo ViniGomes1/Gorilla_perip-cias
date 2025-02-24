@@ -16,4 +16,8 @@ RUN apt-get update && apt-get install -y wget unzip && \
 	rm google-chrome-stable_current_amd64.deb && \ 
 	apt-get clean
 
-CMD ["python", "BotTelegram_Kong.py"]
+ENV FLASK_APP=BotTelegram_Kong.py
+
+EXPOSE 5000
+
+CMD ["python3", "-m", "flask", "run", "--host=0.0.0.0"]

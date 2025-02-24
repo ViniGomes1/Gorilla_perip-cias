@@ -1,4 +1,5 @@
 ####KONG ALPHA 0.O.2####
+from flask import Flask, request
 
 from urllib.parse import urlparse
 
@@ -29,6 +30,8 @@ INICIADO_FOTO = False
 INICIADO_NOME = False
 #######
 
+#flask
+app = Flask(__name__)
 
 ####PARA INSERIR UM LINK####
 @bot.message_handler(commands=["link"], func=lambda message : INICIADO_LINK)
@@ -272,5 +275,21 @@ def responder_generico(mensagem):
     bot.reply_to(mensagem, texto_generico)
     CHAT_ID = mensagem.chat.id
 
-bot.polling()
 
+@app.route('/' + CHAVE_API, methods=['POST'])
+def get_message():
+    json_str = request.get_data().decode('UTF-8')
+    update = telebot.types.Update.de_json(json_str)
+    bot.process_new_updates([update])
+    return '!', 200
+
+@app.route('/')
+def webhook():
+    bot.remove_webhook()
+    bot.set_webhook(url='https://gorilla-peripecias.onrender.com/' + CHAVE_API)
+    return 'Webhook configurado', 200
+
+if __name__ == '__main__':
+    app.run(host="0.0.0.0", port=5000)
+
+#https://gorilla-peripecias.onrender.com
