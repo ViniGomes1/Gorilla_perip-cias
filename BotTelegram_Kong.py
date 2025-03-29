@@ -15,6 +15,7 @@ from AmazonScraping import ScrapingAmazon
 ##INICIALIZAR BOT##
 CHAVE_API = "8009230244:AAHcHJL3L65eQDg22BnESWjrfl_7uvtdPXg"
 bot = telebot.TeleBot(CHAVE_API)
+#bot.set_webhook()
 
 ##PARAMETROS GLOBAIS##
 LINK_PARAMETRO = ""
@@ -274,8 +275,6 @@ def responder_generico(mensagem):
     """
     bot.reply_to(mensagem, texto_generico)
     CHAT_ID = mensagem.chat.id
-
-
 @app.route('/' + CHAVE_API, methods=['POST'])
 def get_message():
     json_str = request.get_data().decode('UTF-8')
@@ -286,7 +285,7 @@ def get_message():
 @app.route('/')
 def webhook():
     bot.remove_webhook()
-    bot.set_webhook(url='https://gorilla-peripecias.onrender.com/' + CHAVE_API)
+    bot.set_webhook(url='http://172.17.0.2:5000' + CHAVE_API)
     return 'Webhook configurado', 200
 
 if __name__ == '__main__':

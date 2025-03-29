@@ -4,6 +4,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
+
 from bs4 import BeautifulSoup
 
 class ScrapingAmazon():
@@ -60,6 +61,7 @@ class ScrapingAmazon():
         edgeOptions.add_argument('--disable-dev-shm-usage')
         edgeOptions.add_argument("--disable-javascript")
         driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=edgeOptions)
+        #service=Service(ChromeDriverManager().install()),
 
         try:
             driver.get(self.link)
