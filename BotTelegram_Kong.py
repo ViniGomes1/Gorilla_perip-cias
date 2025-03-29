@@ -285,7 +285,7 @@ def get_message():
 @app.route('/')
 def webhook():
     bot.remove_webhook()
-    bot.set_webhook(url='https://gorilla-peripecias.onrender.com' + CHAVE_API)
+    bot.set_webhook(url='https://gorilla-peripecias.onrender.com/' + CHAVE_API)
     return 'Webhook configurado', 200
 
 if __name__ == '__main__':
